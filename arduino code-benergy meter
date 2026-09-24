@@ -1,0 +1,24 @@
+const int voltagePin = A0;
+const int currentPin = A1;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  // Read analog sensor values
+  int voltageSensorValue = analogRead(voltagePin);
+  int currentSensorValue = analogRead(currentPin);
+
+  // Example conversion for demonstration
+  float voltage = map(voltageSensorValue, 0, 1023, 0, 250);
+  float current = map(currentSensorValue, 0, 1023, 0, 20);
+
+  // Send data to Java
+  Serial.print(voltage);
+  Serial.print(",");
+  Serial.println(current);
+
+  delay(1000);
+}
